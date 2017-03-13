@@ -6,11 +6,14 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   nulxnl=is.null(xnl)
   if (nulxl==TRUE&&nulxnl==FALSE){
     result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-  }else if(nulxl==FALSE&&nulxnl==TRUE){
+    result$type="hbgrnn1"
+    }else if(nulxl==FALSE&&nulxnl==TRUE){
     result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-  }else if(nulxl==FALSE&&nulxnl==FALSE){
+    result$type="hb"
+    }else if(nulxl==FALSE&&nulxnl==FALSE){
     result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-  }
+    result$type="hbgrnn2"
+    }
   else{stop("input is not complete")
   }
   ggso<-ggs(result$coda)
