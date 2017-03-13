@@ -1,20 +1,15 @@
-sae.hbgrnn<-function(y,...) UseMethod("sae.hbgrnn")
-sae.hbgrnn.all<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
 {
-
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
   nulxnl=is.null(xnl)
-  
-  
-  
   if (nulxl==TRUE&&nulxnl==FALSE){
-    result<-sae.hbgrnn.1(y=y,n=n,x=xnl,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==TRUE){
-    result<-sae.hbgrnn.hb(y=y,n=n,x=xl,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==FALSE){
-    result<-sae.hbgrnn.2(y=y,n=n,xl=xl,xnl=xnl,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }
   else{stop("input is not complete")
   }
@@ -28,7 +23,7 @@ sae.hbgrnn.all<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
   return(list(result=result))
 }
 
-sae.hbgrnn.hb<-function(y=y,n=n,x=x,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
+sae.hb<-function(y=y,n=n,x=x,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
 {
   N<-length(y)
   d<-dim(x)[2]
@@ -134,7 +129,7 @@ sae.hbgrnn.hb<-function(y=y,n=n,x=x,adapt=4000,burnin=1000,nChains = 2,sample=10
   
   #return(list(object=obj,coda=coda)) 
 }
-sae.hbgrnn.1<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
+sae.hbgrnn1<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
 {
   N<-length(y)
   d<-dim(x)[2]
@@ -293,7 +288,7 @@ sae.hbgrnn.1<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,burnin=1000,nChains =
   summary$convergence$raftery<-raftery.diag(coda, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
   return(list(obj=obj,summary=summary,coda=coda)) 
 }
-sae.hbgrnn.2<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
+sae.hbgrnn2<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=1,DIC=FALSE)
 {
   N<-length(y)
   dl<-dim(x)[2]
