@@ -13,13 +13,9 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   }
   else{stop("input is not complete")
   }
- 
   ggso<-ggs(result$coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("saehbgrnn",t,".pdf",sep="_"))
-
-  for (i in 1:38){varp[i]<-paste("P","[",i,"]",sep="")}
-
   return(list(result=result))
 }
 
