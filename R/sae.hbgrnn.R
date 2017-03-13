@@ -877,11 +877,11 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1
   }
   
   if (nulxl==TRUE&&nulxnl==FALSE){
-    result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains =nChains ,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==TRUE){
-    result<-sae.hb(y=y,n=n,x=xl,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,startburnin=startburnin,nChains =nChains ,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==FALSE){
-    result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+    result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains =nChains ,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
   }
   else{stop("input is not complete")
   }
