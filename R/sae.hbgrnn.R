@@ -1,15 +1,15 @@
-sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
+sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=20,DIC=FALSE)
 {
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
   nulxnl=is.null(xnl)
   if (nulxl==TRUE&&nulxnl==FALSE){
-    result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==TRUE){
-    result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
   }else if(nulxl==FALSE&&nulxnl==FALSE){
-    result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains=nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
   }
   else{stop("input is not complete")
   }
