@@ -1,5 +1,7 @@
-spechbgrnn.test<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20)
+spechbgrnn.test<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20)
   {
+  xl<-x
+  xnl<-x
   N<-length(y)
   dl<-dim(x)[2]
   dnl<-dim(x)[2]
