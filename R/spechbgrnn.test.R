@@ -167,7 +167,7 @@ model <- read.winbugs(modelString)
   CPOb<-1/SCPOinvb[,"Mean"]
   summary$LPMLa <- sum(log(CPOa))
   summary$LPMLb <- sum(log(CPOb))
-  summary$BF<-exp(summary$LPMLa-summary$LPMLb)
+  summary$BF<-exp(summary$LPMLb-summary$LPMLa)
   summary$convergence$gbr<-gelman.diag(coda, confidence = 0.95)
   summary$convergence$heidel<-heidel.diag(coda, eps=0.1, pvalue=0.05)
   summary$convergence$geweke<-geweke.diag(coda, frac1=0.1, frac2=0.5)
