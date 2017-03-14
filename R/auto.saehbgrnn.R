@@ -1,8 +1,8 @@
 auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE,scale=TRUE)
 {
   if(scale) {
-    xl <- scale(xl)
-    xnl <- scale(xnl)
+    xl <- as.matrix(scale(xl))
+    xnl <- as.matrix(scale(xnl))
   }
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
