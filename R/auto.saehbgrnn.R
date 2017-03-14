@@ -9,17 +9,20 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     if(scale) {
       
       xnl<- as.matrix(scale(xnl))
-    }
+    } else xnl<- as.matrix((xnl))
     
   }else if(nulxl==FALSE&&nulxnl==TRUE){
     if(scale) {
       xl <- as.matrix(scale(xl))
       
-    }
+    }else xl <- as.matrix((xl))
   }else if(nulxl==FALSE&&nulxnl==FALSE){
     if(scale) {
       xl <- as.matrix(scale(xl))
       xnl<- as.matrix(scale(xnl))
+    }else {
+      xl <- as.matrix((xl))
+      xnl<- as.matrix((xnl))
     }
   }
   
@@ -30,7 +33,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     d<-dim(x)[2]
     dataList=list(
       n=n,
-      x=x,
+      x=xnl,
       y=y,
       M=M,
       d=d,
@@ -168,7 +171,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     
     dataList=list(
       N=N,
-      x=x,
+      x=xl,
       y=y,
       
       d=d,
