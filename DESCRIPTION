@@ -1,11 +1,11 @@
 Package: saehbgrnn
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Small Area Estimation Using Bayesian Mixture Based General Regression Neural Network (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Nur Iriawan, Brodjol Sutijo Suprih Ulama, Kartika Fithriasari, Achmad Syahrul Choir, Rindang Bangun Prasetyo
+Maintainer: Achmad Syahrul Choir <madsyair@gmail.com>
+Description: Small Area Estimation that employes Bayesian Mixture-Based General  (maybe more than one line)
+    Regresion Neural Network.
+License: GPL
 Encoding: UTF-8
 LazyData: true
