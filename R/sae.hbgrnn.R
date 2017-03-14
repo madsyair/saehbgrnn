@@ -9,7 +9,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     for (j in 1:dnl){
     xnl[,j]<- as.vector(scale(xnl[,j]))
     }
-     }
+    }
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
@@ -414,3 +414,4 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   ggmcmc(ggso,file=paste("saehbgrnn",t,".pdf",sep="_"))
   return(list(obj=obj,summary=summary,coda=coda,type=type)) 
 }
+
