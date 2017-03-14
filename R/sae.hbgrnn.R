@@ -2,8 +2,28 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
 {
    if(scale) {
     xl <- as.data.frame(scale(xl))
-    xnl<- as.data.frame(scale(xnl))
+    
+   }
+  
+  if (nulxl==TRUE&&nulxnl==FALSE){
+    if(scale) {
+      
+      xnl<- as.matrix(scale(xnl))
     }
+    
+  }else if(nulxl==FALSE&&nulxnl==TRUE){
+    if(scale) {
+      xl <- as.matrix(scale(xl))
+      
+    }
+    }else if(nulxl==FALSE&&nulxnl==FALSE){
+      if(scale) {
+        xl <- as.matrix(scale(xl))
+        xnl<- as.matrix(scale(xnl))
+      }
+  }
+  
+  
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
