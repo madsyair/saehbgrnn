@@ -1,5 +1,8 @@
-mbgrnn.test<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20)
+mbgrnn.test<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,scale=TRUE)
   {
+  if (scale){
+    x<-as.matrix(scale(x))
+  }
   xl<-x
   xnl<-x
   N<-length(y)

@@ -1,13 +1,28 @@
 auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE,scale=TRUE)
 {
-  if(scale) {
-    xl <- as.array(scale(xl))
-    xnl <- as.array(scale(xnl))
-  }
+  
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
   nulxnl=is.null(xnl)
+  if (nulxl==TRUE&&nulxnl==FALSE){
+    if(scale) {
+      
+      xnl<- as.matrix(scale(xnl))
+    }
+    
+  }else if(nulxl==FALSE&&nulxnl==TRUE){
+    if(scale) {
+      xl <- as.matrix(scale(xl))
+      
+    }
+  }else if(nulxl==FALSE&&nulxnl==FALSE){
+    if(scale) {
+      xl <- as.matrix(scale(xl))
+      xnl<- as.matrix(scale(xnl))
+    }
+  }
+  
   if (nulxl==TRUE&&nulxnl==FALSE){
     #result<-auto.saehbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
     type="hbgrnn1"

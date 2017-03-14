@@ -8,23 +8,6 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
   nulxnl=is.null(xnl)
-  if (nulxl==TRUE&&nulxnl==FALSE){
-    if(scale) {
-      
-      xnl<- as.matrix(scale(xnl))
-    }
-    
-  }else if(nulxl==FALSE&&nulxnl==TRUE){
-    if(scale) {
-      xl <- as.matrix(scale(xl))
-      
-    }
-  }else if(nulxl==FALSE&&nulxnl==FALSE){
-    if(scale) {
-      xl <- as.matrix(scale(xl))
-      xnl<- as.matrix(scale(xnl))
-    }
-  }
   
   if (nulxl==TRUE&&nulxnl==FALSE){
     #result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
@@ -391,7 +374,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           summarise=TRUE )}
     
     }
