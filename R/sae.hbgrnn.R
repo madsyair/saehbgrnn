@@ -372,8 +372,8 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
                           data=dataList ,  
                           n.chains=nChains ,
                           adapt=adapt ,
-                          startburnin=startburnin , 
-                          startsample=startsample ,
+                          startburnin=burnin , 
+                          startsample=sample ,
                           thin=thin ,
                           summarise=TRUE )}
     
