@@ -3,11 +3,11 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   dl<-dim(xl)[2]
   dnl<-dim(xnl)[2]
   if(scale) {
-    for (j in 1:dl){
-    xl[,j] <- as.vector(scale(xl[,j]))
+    
+    xl <- as.data.frame(scale(xl))
     }
     for (j in 1:dnl){
-    xnl[,j]<- as.vector(scale(xnl[,j]))
+    xnl<- as.data.frame(scale(xnl))
     }
     }
   pkgs <- c('ggmcmc')
