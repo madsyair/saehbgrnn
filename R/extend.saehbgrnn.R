@@ -22,6 +22,9 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
   ggso<-ggs(result$coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("extendsaehbgrnn",t,".pdf",sep="_"))
+  return(result)
+
+}
   extend.saehb<-function(objin,adapt=4000,startsample=10000,thinSteps=20,DIC=FALSE)
   {
     
@@ -149,5 +152,4 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
   }
 
 
-  return(result)
-}
+ 
