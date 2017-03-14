@@ -17,7 +17,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     #result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
     type="hbgrnn1"
     N<-length(y)
-    d<-dnl
+    d<-dim(xnl)[2]
     dataList=list(
       n=n,
       x=xnl,
