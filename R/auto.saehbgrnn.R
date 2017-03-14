@@ -61,8 +61,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     CPOinv[i]<-exp(-logfy[i]) 
     
     }
-    
-    #Prior  tau dan sigma
+        #Prior  tau dan sigma
     tau.omega ~ dgamma(2,1)
     
     for( i in 1 : N ) {

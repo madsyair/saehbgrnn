@@ -21,8 +21,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
       d=d,
       N=N
     )
-    
-    if(DIC){
+        if(DIC){
       parameters = c( "CPOinv", "w","mx","P"  , "v","h","deviance", "pd", "popt", "dic", "ped","full.pd")
     }
     else{

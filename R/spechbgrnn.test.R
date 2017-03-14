@@ -83,7 +83,6 @@ for( i in 1 : N ) {
   #CPOinv
 logfyb[i]<-logfact(n[i])-logfact(n[i]-yb[i])-logfact(yb[i])+yb[i]*log(Pb[i])+(n[i]-yb[i])*log(1-Pb[i])
 CPOinvb[i]<-exp(-logfyb[i]) 
-
   }
   #  tau ~ dgamma(0.001,0.001)
   #sigma <- 1 / sqrt(tau)

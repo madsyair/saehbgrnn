@@ -1,5 +1,4 @@
 extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DIC=FALSE)
-
 {
   objin<-resultin$obj
   pkgs <- c('ggmcmc','rjags',  'runjags','coda')
