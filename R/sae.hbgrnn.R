@@ -1,7 +1,6 @@
 sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=20,DIC=FALSE,scale=TRUE)
 {
-  dl<-dim(xl)[2]
-  dnl<-dim(xnl)[2]
+  
   if(scale) {
     
     xl <- as.data.frame(scale(xl))
