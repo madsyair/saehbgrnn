@@ -1,13 +1,8 @@
 sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=20,DIC=FALSE,scale=TRUE)
 {
-  
-  if(scale) {
-    
+   if(scale) {
     xl <- as.data.frame(scale(xl))
-    
-    
     xnl<- as.data.frame(scale(xnl))
-    
     }
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
