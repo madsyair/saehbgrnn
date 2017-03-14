@@ -1,8 +1,14 @@
 sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=20,DIC=FALSE,scale=TRUE)
 {
+  dl<-dim(xl)[2]
+  dnl<-dim(xnl)[2]
   if(scale) {
-    xl <- as.array(scale(xl))
-    xnl <- as.array(scale(xnl))
+    for (j in 1:dl){
+    xl[,j] <- as.vector(scale(xl[,j]))
+    }
+    for (j in 1:dnl){
+    xnl[,j]<- as.vector(scale(xnl[,j]))
+    }
      }
   pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
@@ -12,7 +18,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     #result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
     type="hbgrnn1"
     N<-length(y)
-    d<-dim(xnl)[2]
+    d<-dnl
     dataList=list(
       n=n,
       x=xnl,
