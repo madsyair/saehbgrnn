@@ -19,6 +19,10 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
   ggso<-ggs(result$coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("autosaehbgrnn",t,".pdf",sep="_"))
+  
+  return(result)
+}
+
 
   auto.saehb<-function(y=y,n=n,x=x,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE)
   {
@@ -451,6 +455,3 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     summary$convergence$raftery<-raftery.diag(coda, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
     return(list(obj=obj,summary=summary,coda=coda)) 
   }
-
-  return(result)
-}

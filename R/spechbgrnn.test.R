@@ -172,5 +172,5 @@ model <- read.winbugs(modelString)
   summary$convergence$heidel<-heidel.diag(coda, eps=0.1, pvalue=0.05)
   summary$convergence$geweke<-geweke.diag(coda, frac1=0.1, frac2=0.5)
   summary$convergence$raftery<-raftery.diag(coda, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
-  return(list(obj=obj,summary=summary,coda=coda)) 
+  return(list(summary=summary,coda=coda)) 
 }
