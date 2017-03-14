@@ -376,8 +376,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
                           sample=sample ,
                           thin=thin ,
                           summarise=TRUE )}
-    
-    }
+        }
   else{stop("input is not complete")
   }
   coda <- as.mcmc.list(obj)
