@@ -6,7 +6,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   nulxnl=is.null(xnl)
   if (nulxl==TRUE&&nulxnl==FALSE){
     #result<-sae.hbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-    result$type="hbgrnn1"
+    type="hbgrnn1"
     N<-length(y)
     d<-dim(xnl)[2]
     dataList=list(
@@ -144,7 +144,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     
     }else if(nulxl==FALSE&&nulxnl==TRUE){
     #result<-sae.hb(y=y,n=n,x=xl,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-    result$type="hb"
+    type="hb"
     N<-length(y)
     d<-dim(xl)[2]
     mu.beta<-rep(0,d)
@@ -227,7 +227,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     
     }else if(nulxl==FALSE&&nulxnl==FALSE){
     #result<-sae.hbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,burnin=burnin,nChains=nChains,sample=sample,thin=thin,DIC=DIC)
-    result$type="hbgrnn2"
+    type="hbgrnn2"
     N<-length(y)
     dl<-dim(xl)[2]
     dnl<-dim(xnl)[2]
@@ -402,5 +402,5 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
   ggso<-ggs(coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("saehbgrnn",t,".pdf",sep="_"))
-  return(list(obj=obj,summary=summary,coda=coda)) 
+  return(list(obj=obj,summary=summary,coda=coda,type=type)) 
 }
