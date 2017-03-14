@@ -33,7 +33,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
     }
     else{
       parameters=c( "CPOinv","P","beta0","beta","sigma")}
-    
+    N<-objin$N
     pkgs <- c('rjags',  'runjags','coda')
     lapply(pkgs, require, character.only = T)
     obj<-autoextend.jags(objin, 
@@ -79,7 +79,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
     pkgs <- c('rjags',  'runjags','coda')
     lapply(pkgs, require, character.only = T)
     
-    
+    N<-objin$N
     obj<-autoextend.jags(objin, 
                          add.monitor=parameters , 
                          adapt=adapt ,
@@ -120,7 +120,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
     
     pkgs <- c('rjags',  'runjags','coda')
     lapply(pkgs, require, character.only = T)
-    
+    N<-objin$N
     obj<-autoextend.jags(objin, 
                          add.monitor=parameters , 
                          adapt=adapt ,

@@ -119,6 +119,7 @@ sae.hb<-function(y=y,n=n,x=x,adapt=4000,burnin=1000,nChains = 2,sample=10000,thi
   summary$LPML <- sum(log(CPO))
   CV<-summary$P[,"SD"]/summary$P[,"Mean"]
   summary$P<-cbind(summary$P,CV)
+  obj$N<-N
   summary$modelpar<-summaryout[varnamepar,]
   summary$convergence$gbr<-gelman.diag(coda, confidence = 0.95)
   summary$convergence$heidel<-heidel.diag(coda, eps=0.1, pvalue=0.05)
@@ -275,6 +276,7 @@ sae.hbgrnn1<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,burnin=1000,nChains = 
   varnamepar<-varnamepar[ -match(varnamep,varnamepar)]
   summary<-NULL
   summary$P<-summaryout[varnamep,]
+  obj$N<-N
   SCPOinv<-summaryout[varnameCPOinv,]
   CPO<-1/SCPOinv[,"Mean"]
   summary$LPML <- sum(log(CPO))
@@ -444,6 +446,7 @@ sae.hbgrnn2<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,
   varnamepar<-varnamepar[ -match(varnamep,varnamepar)]
   summary<-NULL
   summary$P<-summaryout[varnamep,]
+  obj$N<-N
   SCPOinv<-summaryout[varnameCPOinv,]
   CPO<-1/SCPOinv[,"Mean"]
   summary$LPML <- sum(log(CPO))
