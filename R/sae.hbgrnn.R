@@ -119,7 +119,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     
     model <- read.winbugs(modelString)
     if(DIC){
-      obj<- autorun.jags( method=c("rjags","parallel")[1] ,
+      obj<- run.jags( method=c("rjags","parallel")[1] ,
                           model=model , 
                           monitor=parameters , 
                           data=dataList ,  
@@ -131,7 +131,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
                           summarise=TRUE )
     }
     else{
-      obj<- autorun.jags( method=c("rjags","parallel")[2] ,
+      obj<- run.jags( method=c("rjags","parallel")[2] ,
                           model=model , 
                           monitor=parameters , 
                           data=dataList ,  
@@ -350,7 +350,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
     
     model <- read.winbugs(modelString)
     if(DIC){
-      obj<- autorun.jags( method=c("rjags","parallel")[1] ,
+      obj<- run.jags( method=c("rjags","parallel")[1] ,
                           model=model , 
                           monitor=parameters , 
                           data=dataList ,  
@@ -362,7 +362,7 @@ sae.hbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,n
                           summarise=TRUE )
     }
     else{
-      obj<- autorun.jags( method=c("rjags","parallel")[2],
+      obj<- run.jags( method=c("rjags","parallel")[2],
                           model=model , 
                           monitor=parameters , 
                           data=dataList ,  
