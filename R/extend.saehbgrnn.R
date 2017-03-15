@@ -34,7 +34,17 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
     }
   else{stop("input is not complete")
   }
-  ggso<-ggs(result$coda)
+  N<-objin$N
+  obj<-autoextend.jags(objin, 
+                       add.monitor=parameters , 
+                       adapt=adapt ,
+                       startsample=startsample ,
+                       thin=thinSteps,
+                       summarise=TRUE)
+  
+  
+    coda <- as.mcmc.list(obj)
+  ggso<-ggs(coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("extendsaehbgrnn",t,".pdf",sep="_"))
   obj<-autoextend.jags(objin, 
@@ -43,7 +53,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
                        startsample=startsample ,
                        thin=thinSteps,
                        summarise=TRUE )
-  coda <- as.mcmc.list(obj)
+  
   mcmc = as.matrix(coda,chains=TRUE)
   summaryout<-summary(obj)
   varnamepar<-varnames(coda)
