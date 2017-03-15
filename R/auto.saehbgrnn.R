@@ -393,10 +393,11 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
     }
   else{stop("input is not complete")
   }
+  coda <- as.mcmc.list(obj)
   ggso<-ggs(coda)
   t<-strftime(Sys.time(),format="%H%M%S")
   ggmcmc(ggso,file=paste("autosaehbgrnn",t,".pdf",sep="_"))
-  coda <- as.mcmc.list(obj)
+  
   mcmc = as.matrix(coda,chains=TRUE)
   summaryout<-summary(obj)
   varnamepar<-varnames(coda)
