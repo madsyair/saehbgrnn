@@ -1,8 +1,8 @@
 saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nChains = 2,sample=10000,thin=20,DIC=FALSE,scale=TRUE)
 {
    
+  pkgs <- c('rjags',  'runjags','coda','ggmcmc')
   
-  pkgs <- c('ggmcmc')
   lapply(pkgs, require, character.only = T)
   nulxl=is.null(xl)
   nulxnl=is.null(xnl)
@@ -43,8 +43,7 @@ saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nC
     else{
       parameters=c(  "CPOinv","w","mx","P","v","h")}
     
-    pkgs <- c('rjags',  'runjags','coda')
-    lapply(pkgs, require, character.only = T)
+    
     modelString<- "
     model
     {
@@ -187,8 +186,7 @@ saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nC
     else{
       parameters=c("CPOinv","P","beta0","beta","sigma")}
     
-    pkgs <- c('rjags',  'runjags','coda')
-    lapply(pkgs, require, character.only = T)
+    
     modelString<- "
     model
     {
@@ -272,8 +270,7 @@ saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nC
     else{
       parameters = c( "CPOinv","w","mx","P","beta0","beta", "v","h")}
     
-    pkgs <- c('rjags',  'runjags','coda')
-    lapply(pkgs, require, character.only = T)
+    
     modelString<- "
     model
     {
