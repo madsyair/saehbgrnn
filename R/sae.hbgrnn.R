@@ -414,8 +414,9 @@ saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nC
   summary$convergence$raftery<-raftery.diag(coda, q=0.025, r=0.005, s=0.95, converge.eps=0.001)
   
   ggso<-ggs(coda)
-  t<-strftime(Sys.time(),format="%H%M%S")
-  ggmcmc(ggso,file=paste("saehbgrnn",t,".pdf",sep="_"))
+  t<-Sys.time()
+  nt <- as.POSIXlt(t)
+  ggmcmc(ggso,file=paste(type,date(t),"-",nt[[3]],"-",nt[[2]],"-",floor(nt[[1]]),".pdf",sep=""))
   return(list(obj=obj,summary=summary,coda=coda,type=type)) 
 }
 
