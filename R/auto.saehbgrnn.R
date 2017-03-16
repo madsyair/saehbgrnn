@@ -1,4 +1,4 @@
-auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,DIC=FALSE,scale=TRUE)
+auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,max.time=inf,DIC=FALSE,scale=TRUE)
 {
   
   pkgs <- c('ggmcmc')
@@ -148,6 +148,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startburnin=startburnin , 
                           startsample=startsample ,
                           thin=thinSteps ,
+                          max.time=max.time,
                           summarise=TRUE )
     }
     else{
@@ -159,6 +160,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
+                          max.time=max.time,
                           thin=thinSteps ,
                           summarise=TRUE )}
     }else if(nulxl==FALSE&&nulxnl==TRUE){
@@ -228,6 +230,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startsample=startsample ,
                           thin=thinSteps ,
                           summarise=TRUE ,
+                          max.time=max.time,
                           plots=TRUE,monitor.deviance =TRUE,
                           monitor.pd = TRUE)
     }
@@ -241,6 +244,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startburnin=startburnin , 
                           startsample=startsample ,
                           thin=thinSteps ,
+                          max.time=max.time,
                           summarise=TRUE ,
                           plots=TRUE,monitor.deviance =FALSE,
                           monitor.pd = FALSE)}
@@ -377,6 +381,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startburnin=startburnin , 
                           startsample=startsample ,
                           thin=thinSteps ,
+                          max.time=max.time,
                           summarise=TRUE )
     }
     else{
@@ -389,6 +394,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startburnin=startburnin , 
                           startsample=startsample ,
                           thin=thinSteps ,
+                          max.time=max.time,
                           summarise=TRUE )}
     }
   else{stop("input is not complete")
