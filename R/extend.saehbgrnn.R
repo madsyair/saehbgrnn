@@ -1,4 +1,4 @@
-extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DIC=FALSE)
+extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,max.time=inf,DIC=FALSE)
 {
   objin<-resultin$obj
   pkgs <- c('ggmcmc','rjags',  'runjags','coda')
@@ -40,6 +40,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,DI
                        adapt=adapt ,
                        startsample=startsample ,
                        thin=thinSteps,
+                       max.time=max.time,
                        summarise=TRUE)
   coda <- as.mcmc.list(obj)
   ggso<-ggs(coda)
