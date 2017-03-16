@@ -46,7 +46,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
   ggso<-ggs(coda)
   t<-Sys.time()
   nt <- as.POSIXlt(t)
-  dt<-format(today, format="%y%m%d")
+  dt<-format(t, format="%y%m%d")
   ggmcmc(ggso,file=paste("extend",type,dt,nt[[3]],nt[[2]],floor(nt[[1]]),".pdf",sep=""))
   
   mcmc = as.matrix(coda,chains=TRUE)
