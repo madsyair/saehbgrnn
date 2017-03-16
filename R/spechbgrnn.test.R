@@ -1,4 +1,4 @@
-mbgrnn.test<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,scale=TRUE)
+mbgrnn.test<-function(y=NULL,n=NULL,x=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,max.time=Inf,scale=TRUE)
   {
   if (scale){
     x<-as.matrix(scale(x))
@@ -148,6 +148,7 @@ model <- read.winbugs(modelString)
                                 adapt=adapt ,
                            startburnin=startburnin , 
                            startsample=startsample ,
+                           max.time=max.time,
                            thin=thinSteps ,
                                 summarise=TRUE )
   coda <- as.mcmc.list(obj)
