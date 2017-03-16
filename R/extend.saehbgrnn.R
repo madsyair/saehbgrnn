@@ -1,4 +1,4 @@
-extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,max.time=inf,DIC=FALSE)
+extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,max.time=Inf,DIC=FALSE)
 {
   objin<-resultin$obj
   pkgs <- c('ggmcmc','rjags',  'runjags','coda')
