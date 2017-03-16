@@ -1,4 +1,4 @@
-auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,max.time=inf,DIC=FALSE,scale=TRUE)
+auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,max.time=Inf,DIC=FALSE,scale=TRUE)
 {
   
   pkgs <- c('ggmcmc')
