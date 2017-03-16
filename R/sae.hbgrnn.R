@@ -416,7 +416,7 @@ saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,burnin=1000,nC
   ggso<-ggs(coda)
   t<-Sys.time()
   nt <- as.POSIXlt(t)
-  dt<-format(today, format="%y%m%d")
+  dt<-format(t, format="%y%m%d")
   ggmcmc(ggso,file=paste(type,dt,nt[[3]],nt[[2]],floor(nt[[1]]),".pdf",sep=""))
   return(list(obj=obj,summary=summary,coda=coda,type=type)) 
 }
