@@ -397,7 +397,8 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
   ggso<-ggs(coda)
   t<-Sys.time()
   nt <- as.POSIXlt(t)
-  ggmcmc(ggso,file=paste("auto",type,date(t),"-",nt[[3]],"-",nt[[2]],"-",floor(nt[[1]]),".pdf",sep=""))
+  dt<-date(t)
+  ggmcmc(ggso,file=paste("auto",type,dt,"-",nt[[3]],"-",nt[[2]],"-",floor(nt[[1]]),".pdf",sep=""))
   
   mcmc = as.matrix(coda,chains=TRUE)
   summaryout<-summary(obj)
