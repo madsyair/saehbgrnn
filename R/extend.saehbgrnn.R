@@ -4,7 +4,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
   pkgs <- c('ggmcmc','rjags',  'runjags','coda')
   lapply(pkgs, require, character.only = T)
   N<-objin$N
-  
+  if (thinSteps=objin$thin) combine<-TRUE else combine<-FALSE
   if (resultin$type=="hbgrnn1"){
     #result<-extend.saehbgrnn1(resultin$obj,adapt=adapt,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
     type="hbgrnn1"
@@ -43,6 +43,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
                        startsample=startsample ,
                        thin=thinSteps,
                        max.time=max.time,
+                       combine=combine,
                        summarise=TRUE)
   }else{
     obj<-autoextend.jags(method=c("rjags","parallel")[2],
@@ -52,6 +53,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
                          startsample=startsample ,
                          thin=thinSteps,
                          max.time=max.time,
+                         combine=combine,
                          summarise=TRUE)
   }
   coda <- as.mcmc.list(obj)
