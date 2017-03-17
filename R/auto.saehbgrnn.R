@@ -1,4 +1,4 @@
-auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thinSteps=20,max.time=Inf,DIC=FALSE,scale=TRUE)
+auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburnin=1000,nChains = 2,startsample=10000,thin=20,max.time=Inf,DIC=FALSE,scale=TRUE)
 {
   
   pkgs <- c('ggmcmc')
@@ -27,7 +27,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
   }
   
   if (nulxl==TRUE&&nulxnl==FALSE){
-    #result<-auto.saehbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    #result<-auto.saehbgrnn1(y=y,n=n,x=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thin=thin,DIC=DIC)
     type="hbgrnn1"
     N<-length(y)
     d<-dim(x)[2]
@@ -147,7 +147,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           max.time=max.time,
                           summarise=TRUE )
     }
@@ -161,10 +161,10 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           startburnin=startburnin , 
                           startsample=startsample ,
                           max.time=max.time,
-                          thin=thinSteps ,
+                          thin=thin ,
                           summarise=TRUE )}
     }else if(nulxl==FALSE&&nulxnl==TRUE){
-    #result<-auto.saehb(y=y,n=n,x=xl,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    #result<-auto.saehb(y=y,n=n,x=xl,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thin=thin,DIC=DIC)
     type="hb"
     N<-length(y)
     d<-dim(x)[2]
@@ -228,7 +228,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           summarise=TRUE ,
                           max.time=max.time,
                           plots=TRUE,monitor.deviance =TRUE,
@@ -243,13 +243,13 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           max.time=max.time,
                           summarise=TRUE ,
                           plots=TRUE,monitor.deviance =FALSE,
                           monitor.pd = FALSE)}
     }else if(nulxl==FALSE&&nulxnl==FALSE){
-    #result<-auto.saehbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thinSteps=thinSteps,DIC=TRUE)
+    #result<-auto.saehbgrnn2(y=y,n=n,xl=xl,xnl=xnl,M=M,adapt=adapt,startburnin=startburnin,nChains = nChains,startsample=startsample,thin=thin,DIC=TRUE)
     type="hbgrnn2"
     N<-length(y)
     dl<-dim(x)[2]
@@ -380,7 +380,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           max.time=max.time,
                           summarise=TRUE )
     }
@@ -393,7 +393,7 @@ auto.saehbgrnn<-function(y=NULL,n=NULL,xl=NULL,xnl=NULL,M=5,adapt=4000,startburn
                           adapt=adapt ,
                           startburnin=startburnin , 
                           startsample=startsample ,
-                          thin=thinSteps ,
+                          thin=thin ,
                           max.time=max.time,
                           summarise=TRUE )}
     }
