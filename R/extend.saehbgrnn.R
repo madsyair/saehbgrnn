@@ -1,12 +1,12 @@
-extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,max.time=Inf,DIC=FALSE)
+extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thin=20,max.time=Inf,DIC=FALSE)
 {
   objin<-resultin$obj
   pkgs <- c('ggmcmc','rjags',  'runjags','coda')
   lapply(pkgs, require, character.only = T)
   N<-objin$N
-  if (thinSteps==objin$thin) combine<-TRUE else combine<-FALSE
+  if (thin==objin$thin) combine<-TRUE else combine<-FALSE
   if (resultin$type=="hbgrnn1"){
-    #result<-extend.saehbgrnn1(resultin$obj,adapt=adapt,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    #result<-extend.saehbgrnn1(resultin$obj,adapt=adapt,startsample=startsample,thin=thin,DIC=DIC)
     type="hbgrnn1"
     if(DIC){
       parameters = c( "CPOinv","w","mx","P"  , "v","h","deviance", "pd", "popt", "dic", "ped","full.pd")
@@ -15,7 +15,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
       parameters=c(  "CPOinv","w","mx","P","v","h")}
     
     }else if(resultin$type=="hb"){
-    #result<-extend.saehb(resultin$obj,adapt=adapt,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+    #result<-extend.saehb(resultin$obj,adapt=adapt,startsample=startsample,thin=thin,DIC=DIC)
     type="hb"
     if(DIC){
       parameters = c( "CPOinv", "P"  ,"beta0","beta","sigma","deviance", "pd", "popt", "dic", "ped","full.pd")
@@ -23,7 +23,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
     else{
       parameters=c( "CPOinv","P","beta0","beta","sigma")}
     }else if(resultin$type=="hbgrnn2"){
-#      result<-extend.saehbgrnn2(resultin$obj,adapt=adapt,startsample=startsample,thinSteps=thinSteps,DIC=DIC)
+#      result<-extend.saehbgrnn2(resultin$obj,adapt=adapt,startsample=startsample,thin=thin,DIC=DIC)
     type="hbgrnn2"
     if(DIC){
       parameters = c(  "CPOinv","w","mx","P","beta0","beta"  , "v","h","deviance", "pd", "popt", "dic", "ped","full.pd")
@@ -41,7 +41,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
                        add.monitor=parameters , 
                        adapt=adapt ,
                        startsample=startsample ,
-                       thin=thinSteps,
+                       thin=thin,
                        max.time=max.time,
                        combine=combine,
                        summarise=TRUE)
@@ -51,7 +51,7 @@ extend.saehbgrnn<-function(resultin,adapt=4000,startsample=10000,thinSteps=20,ma
                          add.monitor=parameters , 
                          adapt=adapt ,
                          startsample=startsample ,
-                         thin=thinSteps,
+                         thin=thin,
                          max.time=max.time,
                          combine=combine,
                          summarise=TRUE)
